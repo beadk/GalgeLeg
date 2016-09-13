@@ -65,7 +65,11 @@ public class StartScreen extends AppCompatActivity {
         if(logik.erSpilletTabt()){
             Intent lost = new Intent(this, Lost.class);
             startActivity(lost);
-        } else {
+        } else if(logik.erSpilletVundet()){
+            Intent win = new Intent(this, Win.class);
+            startActivity(win);
+        }
+        else {
             galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
             tv.setText(logik.getSynligtOrd());
             letter.setText("");
