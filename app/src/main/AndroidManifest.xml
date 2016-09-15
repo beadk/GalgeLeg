@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bjarke.galgeleg">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,8 @@
         <activity android:name=".Lost" />
         <activity android:name=".About" />
         <activity android:name=".Help" />
-        <activity android:name=".Highscore"></activity>
+        <activity android:name=".Highscore" />
+        <activity android:name=".GetMoreWords"></activity>
     </application>
 
 </manifest>
