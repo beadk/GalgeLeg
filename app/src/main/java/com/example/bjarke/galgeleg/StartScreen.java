@@ -12,7 +12,7 @@ import android.widget.TextView;
 import logik.GalgeLogik;
 
 public class StartScreen extends AppCompatActivity {
-    GalgeLogik logik;
+    GalgeLogik logik = new GalgeLogik();
     Drawable images[];
     ImageView galge;
     TextView tv;
@@ -31,7 +31,6 @@ public class StartScreen extends AppCompatActivity {
                 getResources().getDrawable(R.drawable.forkert1),
                 getResources().getDrawable(R.drawable.galge)
         };
-        logik = new GalgeLogik();
         tv.setText(logik.getSynligtOrd());
         galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
         Button letterButton = (Button) findViewById(R.id.letterButton);
@@ -65,9 +64,11 @@ public class StartScreen extends AppCompatActivity {
         if(logik.erSpilletTabt()){
             Intent lost = new Intent(this, Lost.class);
             startActivity(lost);
+            finish();
         } else if(logik.erSpilletVundet()){
             Intent win = new Intent(this, Win.class);
             startActivity(win);
+            finish();
         }
         else {
             galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
@@ -82,11 +83,13 @@ public class StartScreen extends AppCompatActivity {
         if(logik.GætOrdet(word.getText().toString())){
             Intent win = new Intent(this, Win.class);
             startActivity(win);
+            finish();
         } else {
             galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
             if(logik.erSpilletTabt()){
                 Intent lost = new Intent(this, Lost.class);
                 startActivity(lost);
+                finish();
             }
         }
     }
@@ -94,6 +97,7 @@ public class StartScreen extends AppCompatActivity {
         if(logik.erSpilletTabt()){
             Intent lost = new Intent(this, Lost.class);
             startActivity(lost);
+            finish();
         }
     }
 }

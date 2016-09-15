@@ -21,7 +21,6 @@ public class Help extends AppCompatActivity {
         });
     }
     public void ToStart(){
-        Intent intent = new Intent(this, MainScreen.class);
-        startActivity(intent);
+        finish();
     }
 }
