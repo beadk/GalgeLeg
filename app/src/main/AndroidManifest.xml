@@ -23,7 +23,6 @@
         <activity android:name=".About" />
         <activity android:name=".Help" />
         <activity android:name=".Highscore" />
-        <activity android:name=".GetMoreWords"></activity>
     </application>
 
 </manifest>

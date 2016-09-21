@@ -1,6 +1,7 @@
 package com.example.bjarke.galgeleg;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,9 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import logik.*;
 
 public class MainScreen extends AppCompatActivity {
+    static GalgeLogik logik = new GalgeLogik();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +48,37 @@ public class MainScreen extends AppCompatActivity {
                 About();
             }
         });
+        Button getWords = (Button) findViewById(R.id.getWordsButton);
+        getWords.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetWords();
+            }
+        });
     }
     public void StartGame(){
         Intent intent = new Intent(this, StartScreen.class);
+        logik.nulstil();
         startActivity(intent);
     }
     public void GetWords(){
-        Intent intent = new Intent(this, GetMoreWords.class);
-        startActivity(intent);
+        Toast.makeText(this,"Henter ord fra dr.dk",Toast.LENGTH_LONG).show();
+        new AsyncTask(){
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                try {
+                    logik.hentOrdFraDr();
+                    return "Orderne blev korrekt hentet fra DR's server";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return "Orderne blev ikke hentet korrekt" +e;
+                }
+            }
+            @Override
+            protected void onPostExecute(Object resultat){
+                Toast.makeText(MainScreen.this,resultat.toString(),Toast.LENGTH_LONG).show();
+            }
+        }.execute();
     }
     public void Help(){
         Intent intent = new Intent(this, Help.class);

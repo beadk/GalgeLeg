@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class Lost extends AppCompatActivity {
+import logik.GalgeLogik;
 
+public class Lost extends AppCompatActivity {
+    GalgeLogik logik = MainScreen.logik;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class Lost extends AppCompatActivity {
     public void ToStart(){
         Intent intent = new Intent(this, MainScreen.class);
         startActivity(intent);
+        logik.nulstil();
         finish();
     }
     public void Help(){

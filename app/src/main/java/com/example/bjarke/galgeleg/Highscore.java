@@ -7,6 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Highscore extends AppCompatActivity {
 
@@ -21,7 +28,16 @@ public class Highscore extends AppCompatActivity {
                 ToStart();
             }
         });
-
+        TextView tv = (TextView) findViewById(R.id.highScoreView);
+        /*try {
+            BufferedInputStream reader = new BufferedInputStream(new FileInputStream(getFilesDir()+"highscore.txt"));
+            int line = reader.read();
+            System.out.println(line);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     public void ToStart() {

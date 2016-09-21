@@ -15,7 +15,7 @@ import android.widget.TextView;
 import logik.GalgeLogik;
 
 public class StartScreen extends AppCompatActivity {
-    GalgeLogik logik = new GalgeLogik();
+    GalgeLogik logik = MainScreen.logik;
     Drawable images[];
     ImageView galge;
     TextView tv;
@@ -37,7 +37,18 @@ public class StartScreen extends AppCompatActivity {
                 getResources().getDrawable(R.drawable.galge)
         };
         tv.setText(logik.getSynligtOrd());
+        logik.nulstil();
         galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
+        TextView usedLetters = (TextView) findViewById(R.id.usedLetters);
+        String used = "";
+        for (int i = 0; i > logik.getBrugteBogstaver().size(); i++) {
+            if (i == 0) {
+                used = logik.getBrugteBogstaver().get(i);
+            } else {
+                used = used + ", " + logik.getBrugteBogstaver().get(i);
+            }
+        }
+        usedLetters.setText(logik.getBrugteBogstaver().toString());
         Button letterButton = (Button) findViewById(R.id.letterButton);
         letterButton.setOnClickListener(new View.OnClickListener() {
             @Override

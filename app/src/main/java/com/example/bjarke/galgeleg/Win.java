@@ -15,8 +15,10 @@ import android.widget.TextView;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Win extends AppCompatActivity {
+import logik.GalgeLogik;
 
+public class Win extends AppCompatActivity {
+    GalgeLogik logik = MainScreen.logik;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +46,7 @@ public class Win extends AppCompatActivity {
         try {
             FileWriter writer = new FileWriter(getFilesDir()+"highscore.txt",true);
             writer.write("Navn: "+name + "Tur: "+StartScreen.highscore);
-
+            logik.nulstil();
         } catch (IOException e) {
             e.printStackTrace();
         }
