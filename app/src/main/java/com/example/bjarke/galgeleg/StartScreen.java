@@ -37,7 +37,6 @@ public class StartScreen extends AppCompatActivity {
                 getResources().getDrawable(R.drawable.galge)
         };
         tv.setText(logik.getSynligtOrd());
-        logik.nulstil();
         galge.setImageDrawable(images[logik.getAntalForkerteBogstaver()]);
         TextView usedLetters = (TextView) findViewById(R.id.usedLetters);
         String used = "";

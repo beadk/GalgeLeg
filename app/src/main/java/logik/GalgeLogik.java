@@ -62,6 +62,8 @@ public class GalgeLogik {
         return spilletErTabt || spilletErVundet;
     }
 
+    public ArrayList<String> GetWords(){ return muligeOrd; }
+
 
     public GalgeLogik() {
         muligeOrd.add("bil");
@@ -161,12 +163,20 @@ public class GalgeLogik {
         String data = hentUrl("http://dr.dk");
         System.out.println("data = " + data);
 
-        data = data.replaceAll("<.+?>", " ").toLowerCase().replaceAll("[^a-zæøå]", " ");
+        data = data.substring(data.indexOf("<body")).
+                replaceAll("<.+?>", " ").toLowerCase().replaceAll("[^a-zæøå]", " ").
+                replaceAll(" [a-zæøå] "," "). // fjern 1-bogstavsord
+                replaceAll(" [a-zæøå][a-zæøå] "," ");
         System.out.println("data = " + data);
         muligeOrd.clear();
         muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
         System.out.println("muligeOrd = " + muligeOrd);
+        for(int i = 0;i<muligeOrd.size();i++){
+            if(muligeOrd.get(i).length()<3){
+                muligeOrd.remove(i);
+            }
+        }
         nulstil();
     }
 }

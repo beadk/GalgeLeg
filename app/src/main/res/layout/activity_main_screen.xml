@@ -9,47 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.bjarke.galgeleg.MainScreen">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/startButton"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/highscoreButton"
-        android:layout_alignStart="@+id/highscoreButton" />
+    <FrameLayout
+        android:id="@+id/fragmentindhold"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Highscore"
-        android:id="@+id/highscoreButton"
-        android:layout_below="@+id/startButton"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hjælp"
-        android:id="@+id/helpButton"
-        android:layout_below="@+id/highscoreButton"
-        android:layout_alignStart="@+id/highscoreButton"
-        android:layout_alignEnd="@+id/highscoreButton" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Om"
-        android:id="@+id/aboutButton"
-        android:layout_below="@+id/helpButton"
-        android:layout_alignEnd="@+id/helpButton"
-        android:layout_alignStart="@+id/helpButton" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hent flere ord"
-        android:id="@+id/getWordsButton"
-        android:layout_below="@+id/aboutButton"
-        android:layout_alignEnd="@+id/aboutButton"
-        android:layout_alignStart="@+id/aboutButton" />
 </RelativeLayout>

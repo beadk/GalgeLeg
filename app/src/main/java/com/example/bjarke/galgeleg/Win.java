@@ -1,7 +1,9 @@
 package com.example.bjarke.galgeleg;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -39,6 +41,9 @@ public class Win extends AppCompatActivity {
                 SaveScore();
             }
         });
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putInt("wins",prefs.getInt("wins",0)+1).commit();
+
     }
 
     public void SaveScore(){

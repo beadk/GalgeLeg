@@ -1,6 +1,9 @@
 package com.example.bjarke.galgeleg;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +20,7 @@ public class Lost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost);
+
         ImageView win = (ImageView) findViewById(R.id.imageView2);
         win.setImageDrawable(getResources().getDrawable(R.drawable.gameover));
         Button toStart = (Button) findViewById(R.id.toStartButton);
@@ -26,6 +30,8 @@ public class Lost extends AppCompatActivity {
                 ToStart();
             }
         });
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putInt("lost",prefs.getInt("lost",0)+1).commit();
     }
     public void ToStart(){
         Intent intent = new Intent(this, MainScreen.class);

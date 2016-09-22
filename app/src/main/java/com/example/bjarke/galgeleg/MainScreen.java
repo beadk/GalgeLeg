@@ -1,7 +1,10 @@
 package com.example.bjarke.galgeleg;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 import logik.*;
 
 public class MainScreen extends AppCompatActivity {
@@ -20,7 +25,16 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        Button startButton = (Button) findViewById(R.id.startButton);
+
+        if (savedInstanceState == null) {
+            Fragment fragment = new MainFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentindhold, fragment) // tom container i layout
+                    .commit();
+        }
+
+
+        /*Button startButton = (Button) findViewById(R.id.startButton);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,8 +69,15 @@ public class MainScreen extends AppCompatActivity {
                 GetWords();
             }
         });
+
+        TextView wins = (TextView) findViewById(R.id.wins);
+        TextView lost = (TextView) findViewById(R.id.lost);
+        wins.setText("Wins: "+prefs.getInt("wins",0));
+        lost.setText("Looses: "+prefs.getInt("lost",0));
+        */
     }
-    public void StartGame(){
+
+    /*public void StartGame(){
         Intent intent = new Intent(this, StartScreen.class);
         logik.nulstil();
         startActivity(intent);
@@ -81,6 +102,8 @@ public class MainScreen extends AppCompatActivity {
         }.execute();
     }
     public void Help(){
+        Fragment fragment = new HelpFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentindhold,fragment).commit();
         Intent intent = new Intent(this, Help.class);
         startActivity(intent);
     }
@@ -115,5 +138,5 @@ public class MainScreen extends AppCompatActivity {
             ToStart();
         }
         return false;
-    }
+    }*/
 }
