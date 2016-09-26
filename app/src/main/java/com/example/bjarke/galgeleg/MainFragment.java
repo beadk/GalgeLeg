@@ -56,7 +56,7 @@ public class MainFragment extends Fragment {
         highscore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                About();
+                HighScore();
             }
         });
         Button getWords = (Button) inf.findViewById(R.id.getWordsButton);
@@ -76,9 +76,8 @@ public class MainFragment extends Fragment {
     }
 
     public void StartGame(){
-        /*Intent intent = new Intent(this, StartScreen.class);
-        logik.nulstil();
-        startActivity(intent);*/
+        Fragment fragment = new StartFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
     public void GetWords(){
         final Activity act = this.getActivity();
@@ -106,10 +105,12 @@ public class MainFragment extends Fragment {
 
     }
     public void About(){
-
+        Fragment fragment = new AboutFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
     public void HighScore(){
-
+        Fragment fragment = new HighscoreFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
 
 }

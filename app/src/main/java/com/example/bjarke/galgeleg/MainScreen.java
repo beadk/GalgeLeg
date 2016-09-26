@@ -100,24 +100,22 @@ public class MainScreen extends AppCompatActivity {
                 Toast.makeText(MainScreen.this,resultat.toString(),Toast.LENGTH_LONG).show();
             }
         }.execute();
-    }
+    }*/
     public void Help(){
         Fragment fragment = new HelpFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragmentindhold,fragment).commit();
-        Intent intent = new Intent(this, Help.class);
-        startActivity(intent);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
     public void About(){
-        Intent intent = new Intent(this, About.class);
-        startActivity(intent);
+        Fragment fragment = new AboutFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
     public void HighScore(){
-        Intent intent = new Intent(this, Highscore.class);
-        startActivity(intent);
+        Fragment fragment = new HighscoreFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
     public void ToStart(){
-        Intent intent = new Intent(this, MainScreen.class);
-        startActivity(intent);
+        Fragment fragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
 
     @Override
@@ -134,9 +132,9 @@ public class MainScreen extends AppCompatActivity {
             Help();
         } else if(item.getItemId() == R.id.highscore&& !this.getClass().getSimpleName().equals("Highscore")){
             HighScore();
-        } else if(item.getItemId() == R.id.toStart && !this.getClass().getSimpleName().equals("MainScreen")){
+        } else if(item.getItemId() == R.id.toStart){
             ToStart();
         }
         return false;
-    }*/
+    }
 }

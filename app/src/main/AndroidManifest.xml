@@ -17,12 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartScreen" />
-        <activity android:name=".Win" />
-        <activity android:name=".Lost" />
-        <activity android:name=".About" />
-        <activity android:name=".Help" />
-        <activity android:name=".Highscore" />
     </application>
 
 </manifest>
