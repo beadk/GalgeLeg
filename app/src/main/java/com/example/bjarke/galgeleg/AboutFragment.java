@@ -18,8 +18,10 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View inf = inflater.inflate(R.layout.fragment_about,container,false);
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+        }
         Button toStart = (Button)  inf.findViewById(R.id.toStartButton);
         toStart.setOnClickListener(new View.OnClickListener() {
             @Override

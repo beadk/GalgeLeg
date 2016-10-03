@@ -31,6 +31,10 @@ public class WinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         inf = inflater.inflate(R.layout.fragment_win, container, false);
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+            logik = MainScreen.logik;
+        }
         ImageView win = (ImageView) inf.findViewById(R.id.imageView3);
         win.setImageDrawable(getResources().getDrawable(R.drawable.wincheer));
         Button toStart = (Button) inf.findViewById(R.id.toStartButton);
@@ -61,13 +65,13 @@ public class WinFragment extends Fragment {
 
     public void SaveScore(){
         EditText name = (EditText) inf.findViewById(R.id.nameField);
-        /*try {
-            FileWriter writer = new FileWriter(this.getFilesDir()+"highscore.txt",true);
-            writer.write("Navn: "+name + "Tur: "+StartScreen.highscore);
+        try {
+            FileWriter writer = new FileWriter(this.getActivity().getFilesDir()+"highscore.txt",true);
+            writer.write("Navn: "+name + "Tur: "+StartFragment.highscore);
             logik.nulstil();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
         HighScore();
     }
 

@@ -28,7 +28,7 @@ public class GalgeLogik {
     private boolean sidsteBogstavVarKorrekt;
     private boolean spilletErVundet;
     private boolean spilletErTabt;
-
+    private boolean isIni;
 
     public ArrayList<String> getBrugteBogstaver() {
         return brugteBogstaver;
@@ -63,6 +63,10 @@ public class GalgeLogik {
     }
 
     public ArrayList<String> GetWords(){ return muligeOrd; }
+
+    public void setIsIni( boolean b ){isIni=b;}
+
+    public boolean getIsIni(){ return  isIni; }
 
 
     public GalgeLogik() {

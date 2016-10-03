@@ -31,6 +31,9 @@ public class MainFragment extends Fragment {
         View inf = inflater.inflate(R.layout.fragment_main, container, false);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         Button startButton = (Button) inf.findViewById(R.id.startButton);
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+        }
         logik = MainScreen.logik;
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override

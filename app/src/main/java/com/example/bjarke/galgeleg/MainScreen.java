@@ -10,8 +10,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +22,16 @@ import java.io.Serializable;
 
 import logik.*;
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity  implements AdapterView.OnItemClickListener {
     static GalgeLogik logik = new GalgeLogik();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+        if(logik.getIsIni()) {
+            IniLogik();
+        }
 
         if (savedInstanceState == null) {
             Fragment fragment = new MainFragment();
@@ -33,74 +40,15 @@ public class MainScreen extends AppCompatActivity {
                     .commit();
         }
 
-
-        /*Button startButton = (Button) findViewById(R.id.startButton);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StartGame();
-            }
-        });
-        Button help = (Button) findViewById(R.id.helpButton);
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Help();
-            }
-        });
-        Button about = (Button) findViewById(R.id.aboutButton);
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                About();
-            }
-        });
-        Button highscore = (Button) findViewById(R.id.highscoreButton);
-        highscore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                About();
-            }
-        });
-        Button getWords = (Button) findViewById(R.id.getWordsButton);
-        getWords.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GetWords();
-            }
-        });
-
-        TextView wins = (TextView) findViewById(R.id.wins);
-        TextView lost = (TextView) findViewById(R.id.lost);
-        wins.setText("Wins: "+prefs.getInt("wins",0));
-        lost.setText("Looses: "+prefs.getInt("lost",0));
-        */
     }
 
-    /*public void StartGame(){
-        Intent intent = new Intent(this, StartScreen.class);
-        logik.nulstil();
-        startActivity(intent);
+
+
+    static public void IniLogik(){
+        logik = new GalgeLogik();
+        logik.setIsIni(true);
     }
-    public void GetWords(){
-        Toast.makeText(this,"Henter ord fra dr.dk",Toast.LENGTH_LONG).show();
-        new AsyncTask(){
-            @Override
-            protected Object doInBackground(Object[] objects) {
-                try {
-                    logik.hentOrdFraDr();
-                    return "Orderne blev korrekt hentet fra DR's server";
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return "Orderne blev ikke hentet korrekt" +e;
-                }
-            }
-            @Override
-            protected void onPostExecute(Object resultat){
-                Toast.makeText(MainScreen.this,resultat.toString(),Toast.LENGTH_LONG).show();
-            }
-        }.execute();
-    }*/
+
     public void Help(){
         Fragment fragment = new HelpFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
@@ -120,7 +68,7 @@ public class MainScreen extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu); // tilføj evt standardmenuer
+        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menus, menu);
         return true;
     }
@@ -136,5 +84,10 @@ public class MainScreen extends AppCompatActivity {
             ToStart();
         }
         return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 }

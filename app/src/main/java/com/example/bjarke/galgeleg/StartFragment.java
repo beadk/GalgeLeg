@@ -32,6 +32,10 @@ public class StartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+            logik = MainScreen.logik;
+        }
         inf = inflater.inflate(R.layout.fragment_start, container, false);
         galge = (ImageView) inf.findViewById(R.id.imageView);
         tv = (TextView) inf.findViewById(R.id.wordGuess);

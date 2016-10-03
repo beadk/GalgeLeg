@@ -23,8 +23,10 @@ public class HighscoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View inf = inflater.inflate(R.layout.fragment_highscore,container,false);
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+        }
         Button toStart = (Button)  inf.findViewById(R.id.toStartButton);
         toStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,8 @@ public class HighscoreFragment extends Fragment {
                 ToStart();
             }
         });
+
+
         return inf;
     }
     public void ToStart(){

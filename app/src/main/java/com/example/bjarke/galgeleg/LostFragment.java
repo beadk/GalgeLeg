@@ -25,6 +25,10 @@ public class LostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inf = inflater.inflate(R.layout.fragment_lost, container, false);
+        if(!MainScreen.logik.getIsIni()){
+            MainScreen.IniLogik();
+            logik = MainScreen.logik;
+        }
         ImageView lost = (ImageView) inf.findViewById(R.id.imageView2);
         lost.setImageDrawable(getResources().getDrawable(R.drawable.gameover));
         Button toStart = (Button) inf.findViewById(R.id.toStartButton);
