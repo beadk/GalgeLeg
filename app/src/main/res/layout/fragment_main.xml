@@ -64,4 +64,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vælg ord"
+        android:id="@+id/choiceWord"
+        android:layout_above="@+id/startButton"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

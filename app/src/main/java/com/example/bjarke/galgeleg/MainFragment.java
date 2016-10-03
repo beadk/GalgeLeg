@@ -69,13 +69,24 @@ public class MainFragment extends Fragment {
                 GetWords();
             }
         });
-
+        Button choiceWord = (Button) inf.findViewById(R.id.choiceWord);
+        choiceWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChoiceWord();
+            }
+        });
         TextView wins = (TextView) inf.findViewById(R.id.wins);
         TextView lost = (TextView) inf.findViewById(R.id.lost);
         wins.setText("Wins: "+prefs.getInt("wins",0));
         lost.setText("Looses: "+prefs.getInt("lost",0));
 
         return inf;
+    }
+
+    public void ChoiceWord(){
+        Fragment fragment = new ListFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
     }
 
     public void StartGame(){

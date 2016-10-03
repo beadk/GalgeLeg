@@ -68,6 +68,10 @@ public class GalgeLogik {
 
     public boolean getIsIni(){ return  isIni; }
 
+    public ArrayList<String> getMuligeOrd(){
+        return muligeOrd;
+    }
+
 
     public GalgeLogik() {
         muligeOrd.add("bil");
