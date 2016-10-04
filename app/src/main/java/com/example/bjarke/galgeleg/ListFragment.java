@@ -28,21 +28,21 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inf = inflater.inflate(R.layout.fragment_list, container, false);
-        GalgeLogik logik = MainScreen.logik;
-        ListView lv = new ListView(this.getActivity());
-        lv.setOnItemClickListener((AdapterView.OnItemClickListener) this.getActivity());
-        lv.setAdapter(new ArrayAdapter(this.getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1 ,logik.getMuligeOrd()){
+        final GalgeLogik logik = MainScreen.logik;
+        ListView lv = (ListView) inf.findViewById(R.id.listView1);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public View getView(int position, View cachedView, ViewGroup parent){
-                View view = super.getView(position,cachedView,parent);
-                TextView listDescription = (TextView) view.findViewById(R.id.listDescription);
-                listDescription.setText(position);
-                return view;
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                logik.setOrdet(i);
+                StartGame();
             }
         });
-
+        lv.setAdapter(new ArrayAdapter(this.getActivity(),android.R.layout.simple_list_item_1,android.R.id.text1 ,logik.getMuligeOrd()));
 
         return inf;
     }
-
+    public void StartGame(){
+        Fragment fragment = new StartFragment();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentindhold,fragment).commit();
+    }
 }

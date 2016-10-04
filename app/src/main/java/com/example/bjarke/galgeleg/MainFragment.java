@@ -29,7 +29,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inf = inflater.inflate(R.layout.fragment_main, container, false);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+        SharedPreferences prefs = MainScreen.prefs;
         Button startButton = (Button) inf.findViewById(R.id.startButton);
         if(!MainScreen.logik.getIsIni()){
             MainScreen.IniLogik();

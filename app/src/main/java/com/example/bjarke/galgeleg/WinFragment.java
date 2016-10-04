@@ -51,7 +51,7 @@ public class WinFragment extends Fragment {
                 SaveScore();
             }
         });
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+        SharedPreferences prefs = MainScreen.prefs;
         prefs.edit().putInt("wins",prefs.getInt("wins",0)+1).commit();
 
 

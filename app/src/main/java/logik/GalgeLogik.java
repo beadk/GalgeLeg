@@ -72,6 +72,11 @@ public class GalgeLogik {
         return muligeOrd;
     }
 
+    public void setOrdet(int i) {
+        ordet = muligeOrd.get(i);
+        opdaterSynligtOrd();
+    }
+
 
     public GalgeLogik() {
         muligeOrd.add("bil");

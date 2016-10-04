@@ -23,7 +23,8 @@ import java.io.Serializable;
 import logik.*;
 
 public class MainScreen extends AppCompatActivity  implements AdapterView.OnItemClickListener {
-    static GalgeLogik logik = new GalgeLogik();
+    public static GalgeLogik logik = new GalgeLogik();
+    public static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class MainScreen extends AppCompatActivity  implements AdapterView.OnItem
         if(logik.getIsIni()) {
             IniLogik();
         }
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         if (savedInstanceState == null) {
             Fragment fragment = new MainFragment();

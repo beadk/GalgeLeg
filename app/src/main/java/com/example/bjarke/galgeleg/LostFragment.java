@@ -38,7 +38,7 @@ public class LostFragment extends Fragment {
                 ToStart();
             }
         });
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getActivity());
+        SharedPreferences prefs = MainScreen.prefs;
         prefs.edit().putInt("lost",prefs.getInt("lost",0)+1).commit();
         return inf;
     }
